@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muzyczny Żart - Skibidi Toilet sped up</title>
+    <script>
+        let count = 0;  // Licznik odtworzeń piosenki
+        const maxCount = 100;  // Maksymalna liczba odtworzeń
+
+        function playAudio() {
+            const audio = document.createElement('audio');
+            audio.src = "TWOJ_LINK_DO_AUDIO.mp3";  // Tutaj wstaw link do MP3
+            audio.loop = true;  // Piosenka będzie się powtarzać
+            audio.autoplay = true;
+            document.body.appendChild(audio);
+
+            audio.onended = function() {
+                count++;
+                if (count < maxCount) {
+                    playAudio();  // Zagra ponownie, jeśli nie osiągnięto 100 odtworzeń
+                } else {
+                    alert('Piosenka została odtworzona 100 razy! Dziękujemy za zabawę!');
+                    window.location.href = "https://www.youtube.com";  // Przekierowanie na YouTube po zakończeniu
+                }
+            };
+        }
+
+        // Zablokowanie zamykania okna
+        window.onbeforeunload = function() {
+            return "Jesteś pewny, że chcesz opuścić stronę? Piosenka się jeszcze nie skończyła!";
+        };
+
+        // Rozpoczęcie odtwarzania zaraz po załadowaniu strony
+        window.onload = function() {
+            playAudio();
+        };
+    </script>
+</head>
+<body>
+    <h1>Witaj w niespodziance! Za chwilę zacznie się zabawa...</h1>
+    <p>Piosenka zacznie się odtwarzać i będzie powtarzać się 100 razy, więc przygotuj się na niespodziankę!</p>
+</body>
+</html>
